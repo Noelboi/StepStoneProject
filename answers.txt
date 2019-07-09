@@ -1,0 +1,35 @@
+1. Write a function to remove duplicate values from an array.  (Assume all values of the array are simple, lowercase strings)
+
+-First approach to removing duplicate values from an array.
+
+function superDuplicatesRemover(arr) {
+	for (i = 0; i < arr.length; i++) {
+		for (j = i + 1; j < arr.length; j++) {
+			if (arr[i] === arr[j]) {
+				arr.splice(j, 1);
+			}
+		}
+	}
+	return arr;
+}
+
+-Second streamlined approach to removing duplicate values from an array.
+
+function superDuplicatesRemover(arr) {
+	const removeDups = new Set(arr);
+	const newArr = [...removeDups];
+	return newArr
+}
+
+2. Why use server side filtering instead of client side filtering?
+In most cases of filtering through data, server side filtering would be optimal so that more specific and less data is sent to the client which would mean faster transfers for clients as well as being more secure then sending full data-sets to clients. Cases where client side filtering would be optimal would be where data sets are expected to stay small. 
+
+3. What is jQuery and why would you choose to use it, or choose not to use it?
+Jquery is a Javascript library that simplifies the use of things like DOM manipulation, AJAX, event handling and browser compatibility. In smaller projects, I found advantages in using JQuery for its use of selectors being quite similar to those used in CSS and using those selectors to simplify how the functionality of my JS interacts with DOM/HTML elements. In my research of disadvantages using JQuery, I found that more users are moving toward using different frameworks instead, due to JQuery’s file size out weighing the benefits of actually using it, along with other reasons, like being troublesome to debug when used a larger scale projects.
+
+4. What's wrong with this snippet of code?
+	$name = $_POST['name'];
+	$query = 'insert into friends (name) values ("' . $name . '")';
+	mysqli_query($connection, $query);
+
+In what I could find about how this works in PHP, I can infer that the code is trying to insert a name into a "friends" table. The query is defined but no connection is defined with credential or database parameters to connect to the specified "friends" table.
